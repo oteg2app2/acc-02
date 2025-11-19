@@ -54,7 +54,7 @@ AIによって生成されたコードは、開発者自身がその動作を理
 
 ```bash
 git clone https://github.com/oteg2app2/acc-02.git
-cd Accel-Rain-Avoid
+cd acc-02
 
 ### 2. Firebase設定（必須）
 
@@ -91,4 +91,5 @@ Android Studioでプロジェクトを開き、実機またはエミュレータ
 7.  **ゲームオーバー**: 雨粒に当たるとゲームオーバーです。
 
 ```http://googleusercontent.com/image_generation_content/0
+
 
