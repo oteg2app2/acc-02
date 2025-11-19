@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/kumo_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/raindropContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/hangrider_woman"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/scorePanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:background="#80000000"
+        app:layout_constraintTop_toTopOf="parent"         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/highScoreText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="High Score: 0"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:paddingStart="4dp"
+                android:shadowDx="1" android:shadowDy="1" android:shadowRadius="2" android:shadowColor="#000000"/>
+
+            <TextView
+                android:id="@+id/scoreText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Score: 0"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:gravity="end"
+                android:paddingEnd="4dp"
+                android:shadowDx="1" android:shadowDy="1" android:shadowRadius="2" android:shadowColor="#000000"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/levelInfoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Next Level: 15s"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:gravity="center_horizontal"
+            android:shadowDx="1" android:shadowDy="1" android:shadowRadius="2" android:shadowColor="#000000"/>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/pauseButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_pause"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:visibility="gone"
+        android:contentDescription="Pause Game"
+        app:tint="@android:color/white"
+
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintTop_toBottomOf="@+id/scorePanel"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        />
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_settings_gear"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:tint="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <FrameLayout
+        android:id="@+id/gameOverPanel"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:background="@drawable/rounded_panel_background"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"/>
+
+    <FrameLayout
+        android:id="@+id/tutorialPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:elevation="20dp"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true">
+
+        <FrameLayout
+            android:layout_width="300dp"
+            android:layout_height="350dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_panel_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HOW TO PLAY"
+                    android:textSize="32sp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginBottom="24dp"/>
+
+                <TextView
+                    android:id="@+id/tutorialText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="スマートフォンを傾けてキャラクターを操作します。\n\n雨粒を避け続けてスコアを稼ぎましょう！"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="32dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/tutorialStartButton"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="START"
+                    android:textSize="20sp"
+                    android:background="@drawable/bg_button_normal"
+                    android:textColor="#000000"
+                    app:backgroundTint="@null"/>
+
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/settingsPanel"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:background="@drawable/rounded_panel_background"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SETTINGS"
+                android:textSize="32sp"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="24dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BGM VOLUME"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="8dp"/>
+
+            <SeekBar
+                android:id="@+id/volumeSeekBar"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:progressTint="@android:color/white"
+                android:thumbTint="@android:color/white"
+                android:max="100"
+                android:progress="50"
+                android:layout_marginBottom="32dp"/>
+
+            <Switch
+                android:id="@+id/vibrationSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VIBRATION ON/OFF"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:checked="true"
+                android:layout_marginBottom="32dp"/>
+
+            <Button
+                android:id="@+id/settingsCloseButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="CLOSE"
+                android:textSize="20sp"
+                android:background="@drawable/bg_button_normal"
+                android:textColor="#000000"
+                app:backgroundTint="@null"/>
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/gameOverText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GAME OVER"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gameOverPanel"
+        app:layout_constraintBottom_toBottomOf="@+id/gameOverPanel"
+        app:layout_constraintVertical_bias="0.4"/>
+
+    <LinearLayout
+        android:id="@+id/gameOverButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameOverPanel"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/restartButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="RESTART"
+            android:textSize="24sp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_button_normal"
+            android:textColor="#000000"
+            app:backgroundTint="@null" />
+
+        <Button
+            android:id="@+id/levelsButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="LEVELS"
+            android:textSize="24sp"
+            android:background="@drawable/bg_button_easy"
+            android:textColor="#000000"
+            app:backgroundTint="@null" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/titleLogo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/title_logo_new" android:visibility="visible"
+        android:adjustViewBounds="true"
+        android:paddingBottom="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/levelButtons"
+        app:layout_constraintEnd_toEndOf="@+id/levelButtons"
+        app:layout_constraintStart_toStartOf="@+id/levelButtons"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <LinearLayout
+        android:id="@+id/levelButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <Button
+            android:id="@+id/easyButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="EASY"
+            android:textSize="24sp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_button_easy"
+            android:textColor="#000000"
+            app:backgroundTint="@null" />
+
+        <Button
+            android:id="@+id/normalButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="NORMAL"
+            android:textSize="24sp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_button_normal"
+            android:textColor="#000000"
+            app:backgroundTint="@null" />
+
+        <Button
+            android:id="@+id/hardButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="HARD"
+            android:textSize="24sp"
+            android:background="@drawable/bg_button_hard"
+            android:textColor="#000000"
+            app:backgroundTint="@null" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

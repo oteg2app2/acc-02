@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>easy_spawn_chance</key>
+        <value>1</value>
+    </entry>
+    <entry>
+        <key>easy_multiplier</key>
+        <value>1</value>
+    </entry>
+    <entry>
+        <key>normal_spawn_chance</key>
+        <value>5</value>
+    </entry>
+    <entry>
+        <key>normal_multiplier</key>
+        <value>3</value>
+    </entry>
+    <entry>
+        <key>hard_spawn_chance</key>
+        <value>10</value>
+    </entry>
+    <entry>
+        <key>hard_multiplier</key>
+        <value>5</value>
+    </entry>
+</defaultsMap>
